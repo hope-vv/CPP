@@ -1,0 +1,139 @@
+#include "PmergeMe.hpp"
+
+PmergeMe::PmergeMe() {}
+PmergeMe::~PmergeMe() {}
+PmergeMe::PmergeMe(const PmergeMe &o) { *this = o; }
+PmergeMe &PmergeMe::operator=(const PmergeMe &o) {
+    if (this != &o) {
+        vec = o.vec;
+        deq = o.deq;
+    }
+    return *this;
+}
+
+void PmergeMe::parseInput(int argc, char **argv) {
+    for (int i = 1; i < argc; i++) {
+        std::string s(argv[i]);
+        for (size_t j = 0; j < s.size(); j++) {
+            if (!isdigit(s[j]))
+                throw std::invalid_argument("Error");
+        }
+        long num = std::atol(s.c_str());
+        if (num < 0 || num > INT_MAX)
+            throw std::invalid_argument("Error");
+        vec.push_back(num);
+        deq.push_back(num);
+    }
+    if (vec.empty())
+        throw std::invalid_argument("Error");
+}
+
+// ------------------------ VECTOR ------------------------
+
+void PmergeMe::insertSortedVec(std::vector<int> &sorted, int value) {
+    std::vector<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), value);
+    sorted.insert(pos, value);
+}
+
+void PmergeMe::mergeInsertSortVec(std::vector<int> &v) {
+    if (v.size() <= 1)
+        return;
+
+    std::vector<int> larger;
+    std::vector<int> smaller;
+
+    // Step 1: Pair elements
+    for (size_t i = 0; i + 1 < v.size(); i += 2) {
+        if (v[i] < v[i + 1]) {
+            smaller.push_back(v[i]);
+            larger.push_back(v[i + 1]);
+        } else {
+            smaller.push_back(v[i + 1]);
+            larger.push_back(v[i]);
+        }
+    }
+    if (v.size() % 2)
+        smaller.push_back(v.back());
+
+    // Step 2: Recursively sort the larger elements
+    mergeInsertSortVec(larger);
+
+    // Step 3: Build sorted list
+    std::vector<int> sorted = larger;
+
+    // Step 4: Insert smaller elements
+    for (size_t i = 0; i < smaller.size(); ++i)
+        insertSortedVec(sorted, smaller[i]);
+
+    v = sorted;
+}
+
+// ------------------------ DEQUE ------------------------
+
+void PmergeMe::insertSortedDeq(std::deque<int> &sorted, int value) {
+    std::deque<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), value);
+    sorted.insert(pos, value);
+}
+
+void PmergeMe::mergeInsertSortDeq(std::deque<int> &d) {
+    if (d.size() <= 1)
+        return;
+
+    std::deque<int> larger;
+    std::deque<int> smaller;
+
+    // Step 1: Pair elements
+    for (size_t i = 0; i + 1 < d.size(); i += 2) {
+        if (d[i] < d[i + 1]) {
+            smaller.push_back(d[i]);
+            larger.push_back(d[i + 1]);
+        } else {
+            smaller.push_back(d[i + 1]);
+            larger.push_back(d[i]);
+        }
+    }
+    if (d.size() % 2)
+        smaller.push_back(d.back());
+
+    // Step 2: Recursively sort the larger elements
+    mergeInsertSortDeq(larger);
+
+    // Step 3: Build sorted list
+    std::deque<int> sorted = larger;
+
+    // Step 4: Insert smaller elements
+    for (size_t i = 0; i < smaller.size(); ++i)
+        insertSortedDeq(sorted, smaller[i]);
+
+    d = sorted;
+}
+
+// ------------------------ DISPLAY & SORT ------------------------
+
+void PmergeMe::sortAndDisplay() {
+    std::cout << "Before: ";
+    for (size_t i = 0; i < vec.size(); i++)
+        std::cout << vec[i] << " ";
+    std::cout << std::endl;
+
+    clock_t startVec = clock();
+    mergeInsertSortVec(vec);
+    clock_t endVec = clock();
+
+    clock_t startDeq = clock();
+    mergeInsertSortDeq(deq);
+    clock_t endDeq = clock();
+
+    std::cout << "After:  ";
+    for (size_t i = 0; i < vec.size(); i++)
+        std::cout << vec[i] << " ";
+    std::cout << std::endl;
+
+    double vecTime = (double)(endVec - startVec) / CLOCKS_PER_SEC * 1e6;
+    double deqTime = (double)(endDeq - startDeq) / CLOCKS_PER_SEC * 1e6;
+
+    std::cout << "Time to process a range of " << vec.size()
+              << " elements with std::vector : " << vecTime << " us" << std::endl;
+    std::cout << "Time to process a range of " << deq.size()
+              << " elements with std::deque  : " << deqTime << " us" << std::endl;
+}

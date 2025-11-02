@@ -1,0 +1,80 @@
+🧠 Algorithm Overview — Ford-Johnson (Merge-Insertion Sort)
+
+This algorithm is more efficient than normal merge sort for small sequences.
+Here’s the simplified version adapted for the project:
+
+Steps:
+
+Pair elements into groups of two.
+Sort each pair so smaller comes first.
+Sort all pairs based on their larger element using recursion.
+Insert smaller elements one by one into the main sorted sequence at the correct position.
+(Binary insertion is used here.)
+
+
+
+1. Split into pairs
+2. Sort pairs by their max element
+3. Build sorted sequence of maxima
+4. Insert minima in correct place
+
+
+function FordJohnsonSort(arr):
+    if length(arr) <= 1:
+        return arr
+    
+    // Step 1: Pairwise comparisons
+    winners = [], losers = []
+    for i from 0 to length(arr)-1 step 2:
+        if i+1 < length(arr):
+            if arr[i] <= arr[i+1]:
+                winners.append(arr[i])
+                losers.append(arr[i+1])
+            else:
+                winners.append(arr[i+1])
+                losers.append(arr[i])
+        else:
+            winners.append(arr[i])
+    
+    // Step 2: Recursively sort winners
+    sorted_winners = FordJohnsonSort(winners)
+    
+    // Step 3: Initialize sorted list with smallest element
+    sorted_list = [sorted_winners[0]]
+    
+    // Step 4: Insert remaining elements
+    remaining = losers + sorted_winners[1:]
+    for element in insertion_order(remaining):
+        binary_insert(sorted_list, element)
+    
+    return sorted_list
+
+function binary_insert(sorted_list, element):
+    // Insert element into sorted_list using binary search
+    low = 0, high = length(sorted_list)
+    while low < high:
+        mid = (low + high) // 2
+        if sorted_list[mid] <= element:
+            low = mid + 1
+        else:
+            high = mid
+    sorted_list.insert(low, element)
+
+
+
+
+    ////// insersortedvec:
+    🔍 Line by line:
+
+std::lower_bound(sorted.begin(), sorted.end(), value);
+
+Finds the first position in the sorted vector where value should go.
+
+Example:
+If sorted = [2, 5, 8, 10] and value = 6,
+lower_bound returns an iterator pointing to 8.
+sorted.insert(pos, value);
+Inserts the value at that position, shifting elements to the right.
+After insertion → [2, 5, 6, 8, 10].
+✅ So this function = “binary insertion” step (efficiently finds where to insert).
+

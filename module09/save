@@ -1,0 +1,138 @@
+Perfect! Since you already have a solid **C/C++ background**, Linux knowledge, Docker basics, and you’re learning Java while building a web server, we can make a **2-week focused roadmap** tailored for a **Junior Technical Staff role at Oracle**. The goal is to strengthen **Java skills, databases, algorithms, and system knowledge** while building a small project you can showcase.
+
+---
+
+## **Week 1: Core Java, OOP & Data Structures**
+
+### **Day 1-2: Java Fundamentals & OOP**
+
+* Java syntax, data types, loops, conditionals.
+* Classes, objects, constructors, `this` keyword.
+* **OOP Concepts:** inheritance, polymorphism, abstraction, encapsulation.
+* Exception handling.
+* **Hands-on:** Write small programs that implement these concepts (e.g., a `BankAccount` class hierarchy).
+
+**Resources:**
+
+* [Java Tutorials (Oracle)](https://docs.oracle.com/javase/tutorial/)
+* [Java OOP Concepts Explained](https://www.geeksforgeeks.org/java-oops-concepts/)
+
+---
+
+### **Day 3-4: Data Structures in Java**
+
+* Arrays, ArrayList, LinkedList, Stack, Queue, HashMap.
+* Learn to use Java Collections Framework.
+* **Hands-on:** Implement simple algorithms using these structures (e.g., stack-based calculator, phonebook using HashMap).
+
+**Resources:**
+
+* [Java Collections Tutorial](https://www.javatpoint.com/collections-in-java)
+* [LeetCode Easy Problems](https://leetcode.com/problemset/all/?difficulty=Easy)
+
+---
+
+### **Day 5-6: Algorithms & Problem-Solving**
+
+* Sorting: bubble, selection, insertion, quicksort basics.
+* Searching: linear and binary search.
+* Simple recursion problems.
+* **Hands-on:** Solve 2–3 problems per day on arrays, strings, and recursion.
+
+**Resources:**
+
+* [HackerRank Java Tutorials](https://www.hackerrank.com/domains/tutorials/10-days-of-java)
+* [LeetCode Easy & Medium](https://leetcode.com/problemset/all/)
+
+---
+
+### **Day 7: Java Project Start**
+
+* Start building a **mini web server project** in Java:
+
+  * Handle HTTP GET requests.
+  * Serve static files.
+  * Log requests to console.
+* Integrate **basic OOP principles** in your server code.
+
+---
+
+## **Week 2: Databases, Networking, and Docker Integration**
+
+### **Day 8-9: SQL & Databases**
+
+* Learn **basic SQL**: `SELECT`, `INSERT`, `UPDATE`, `DELETE`.
+* Joins, primary keys, foreign keys.
+* Optional: Basic **PL/SQL** for Oracle DB.
+* **Hands-on:** Connect your Java web server to a local SQLite/MySQL database to store logs or user info.
+
+**Resources:**
+
+* [SQL Tutorial (W3Schools)](https://www.w3schools.com/sql/)
+* [Oracle SQL Basics](https://www.oracle.com/database/technologies/sql.html)
+
+---
+
+### **Day 10: Networking & Web Concepts**
+
+* HTTP basics, TCP/IP, sockets in Java.
+* URL parsing, request headers, response codes.
+* **Hands-on:** Enhance your web server to handle multiple connections using **threads**.
+
+**Resources:**
+
+* [Java Networking Tutorial](https://www.geeksforgeeks.org/introduction-to-java-networking/)
+
+---
+
+### **Day 11: Docker & Deployment**
+
+* Containerize your web server using Docker.
+* Map ports, mount volumes, and run in a container.
+* Optional: Create a simple `docker-compose.yml` if using a database.
+
+**Resources:**
+
+* [Dockerize a Java App](https://docs.docker.com/samples/java/)
+
+---
+
+### **Day 12-13: Mini Project Enhancement**
+
+* Add **logging**, **basic authentication**, or **REST endpoints**.
+* Use **Java collections and OOP** effectively.
+* Test with **multiple clients** to demonstrate networking understanding.
+
+---
+
+### **Day 14: Final Touch & Preparation**
+
+* Refactor your code, add **comments and README**.
+* Prepare a **short presentation or GitHub repo**.
+* Review **common interview questions** for junior Oracle engineers:
+
+  * OOP questions.
+  * Data structures and algorithms.
+  * SQL queries.
+  * Basic networking.
+
+**Optional Interview Practice:**
+
+* Solve **2–3 LeetCode Medium problems**.
+* Explain your mini web server project, architecture, and Docker integration.
+
+---
+
+✅ **Goal by the End of 2 Weeks:**
+
+* Solid Java fundamentals and OOP knowledge.
+* Hands-on mini web server project (with optional database integration).
+* Basic algorithms and data structure problem-solving.
+* Understanding of networking and Docker deployment.
+* Ready to **showcase your skills in interviews**.
+
+---
+
+If you want, I can also **make a daily schedule with exact coding exercises, project tasks, and time allocations**, so you can follow it like a bootcamp for 2 weeks.
+
+Do you want me to do that?

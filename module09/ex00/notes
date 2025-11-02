@@ -1,0 +1,11 @@
+the program take the input file
+the input file is in this format : yyyy-mm-dd | value
+csf file conntains date and exchange_rate
+
+container used:
+    std::map
+        to store the price database so we can search the
+        closet lower date efficiently.
+
+must handle invalid input like bad date format, negative numbers
+too large numbers, file open errors.

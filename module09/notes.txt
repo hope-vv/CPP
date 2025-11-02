@@ -1,0 +1,13 @@
+Understand the problem
+
+Input: A single string with an RPN expression (e.g., "8 9 * 9 - 9 - 9 - 4 - 1 +").
+Output: The final result after evaluating the expression.
+Operations supported: + - * /.
+Constraints:
+    Numbers are integers < 10.
+    Errors must print "Error" to std::cerr.
+RPN works like this:
+    Read tokens from left to right.
+    If token is a number → push it onto a stack.
+    If token is an operator → pop two numbers, apply the operation, push result.
+    At the end → only one number should remain on the stack → this is the result.
