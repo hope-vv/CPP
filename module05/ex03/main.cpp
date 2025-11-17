@@ -35,7 +35,7 @@ int main()
         std::cout << std::endl;
 
         //Execute forms
-        if (form1) alice.executeForm(*form1);
+        if (form1) alice.excdecuteForm(*form1);
         if (form2) alice.executeForm(*form2);
         if (form3) alice.executeForm(*form3);
 
